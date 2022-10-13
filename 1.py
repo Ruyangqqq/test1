@@ -1,10 +1,7 @@
-# Reading the file all at once
 def readit_all(filename = "penguins.csv"):
-  """
-  Read and parse CSV -- read entire file all at once.
-  """
+  
   with open(filename, 'r') as file:
-    mylist = file.read().rstrip().split("\n") # rstrip() is needed
+    mylist = file.read().rstrip().split("\n") 
 
   keys = mylist.pop(0).split(",")
   data = []
@@ -30,7 +27,7 @@ for datum in data:
   plt.scatter(float(datum[x_label]), float(datum[y_label]), c="steelblue")
 
 data[0]
-
+plt.show()
 
 
 z_label = "species"
@@ -51,21 +48,18 @@ plt.show()
 
 
 def process(data, x = "bill_length_mm", y = "flipper_length_mm", z = "species"):
-    """
-    Extract 2 items/columns, remove missing data "NA" and cast strings to floats
-    """
     bad_count = 0
     X = []
     Y = []
     Z = []
     for d in data:
-      # Remove missing data
+      
       if "NA" in [d[x], d[y], d[z]]:
           bad_count += 1
           print("Skipping NA --", bad_count, "lines skipped")
           continue
       
-      # Convert strings to numbers for the quantitative variables
+     
       X.append(float(d[x]))
       Y.append(float(d[y]))
       Z.append(d[z])
@@ -80,7 +74,7 @@ for s in species:
   X_subset=[x_sub for x_sub,z_sub in zip(X,Z) if z_sub==s]
   Y_subset=[y_sub for y_sub,z_sub in zip(Y,Z) if z_sub==s]
 
-  # another way that does the same thing as 2 lines above
+  
   X_subset = [d for i, d in enumerate(X) if s == Z[i]]
   Y_subset = [d for i, d in enumerate(Y) if s == Z[i]]
 
