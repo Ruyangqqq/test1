@@ -1,3 +1,5 @@
+
+
 def readit_all(filename = "penguins.csv"):
   
   with open(filename, 'r') as file:
@@ -82,6 +84,8 @@ for s in species:
 
 plt.legend()
 plt.show()
+
+
 
 
 
